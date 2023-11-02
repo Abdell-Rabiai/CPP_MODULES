@@ -1,4 +1,4 @@
-NAME = crappybook
+NAME = megaphone
 
 END=\033[0m
 LIGHTRED=\033[1;31m
@@ -7,9 +7,9 @@ LightPurple=\033[1;35m
 Cyan=\033[0;36m
 GREEN = \033[92m
                                                                                             																								 
-ex01 = $(addprefix , Contact.cpp phoneBook.cpp)
+# ex00 = $(addprefix , megaphone.cpp)
 
-SRCS_OBJ = $(ex01)
+# SRCS_OBJ = $(ex00)
 
 SRC = megaphone.cpp
 
@@ -23,7 +23,7 @@ CC = c++
 
 all : $(NAME)
 
-%.o: %.c $(HEADER)
+%.o: %.cpp $(HEADER)
 	@printf "$(GREEN) Generating objects... %-33.33s\r" $@
 	$(CC) $(FLAGS) -c $< -o $@
 
