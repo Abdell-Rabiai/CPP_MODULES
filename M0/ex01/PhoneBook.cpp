@@ -50,10 +50,10 @@ int PhoneBook::display_all_contacts()
     std::cout << "\001\033[1;36m\002-----------------------\001\033[0m\002 \001\033[1;33m\002MY PHONE BOOK\001\033[0m\002 \001\033[1;36m\002--------------------------------\001\033[0m\002" << std::endl;
     for (int i = 0; i < this->num_of_contacts; i++)
     {
-        std::cout << "id" << std::setw(20) << "\001\033[1;34m\002" << i << "\001\033[0m\002" << "\001\033[1;36m\002|\001\033[0m\002";
-        std::cout << std::setw(20) << "\001\033[1;34m\002" << this->truncate_string(this->contacts[i].get_first_name()) << "\001\033[0m\002" << "\001\033[1;36m\002|\001\033[0m\002";
-        std::cout << std::setw(20) << "\001\033[1;34m\002" << this->truncate_string(this->contacts[i].get_last_name()) << "\001\033[0m\002" << "\001\033[1;36m\002|\001\033[0m\002";
-        std::cout << std::setw(20) << "\001\033[1;34m\002" << this->truncate_string(this->contacts[i].get_nickname()) << "\001\033[0m\002" << "\001\033[1;36m\002|\001\033[0m\002";
+        std::cout << "id" << "\001\033[1;34m\002" << std::setw(10) << i << "\001\033[0m\002" << "\001\033[1;36m\002|\001\033[0m\002";
+        std::cout << "\001\033[1;34m\002" << std::setw(10) << this->truncate_string(this->contacts[i].get_first_name()) << "\001\033[0m\002" << "\001\033[1;36m\002|\001\033[0m\002";
+        std::cout << "\001\033[1;34m\002" << std::setw(10) << this->truncate_string(this->contacts[i].get_last_name()) << "\001\033[0m\002" << "\001\033[1;36m\002|\001\033[0m\002";
+        std::cout << "\001\033[1;34m\002" << std::setw(10) << this->truncate_string(this->contacts[i].get_nickname()) << "\001\033[0m\002" << "\001\033[1;36m\002|\001\033[0m\002";
         std::cout << std::endl;
         std::cout << "\001\033[1;36m\002----------------------------------------------------------------------\001\033[0m\002" << std::endl;
     }
