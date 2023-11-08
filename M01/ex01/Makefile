@@ -1,4 +1,4 @@
-NAME = PhoneBook
+NAME = ex01
 
 SRC = $(wildcard *.cpp)
 HEADER = $(wildcard *.hpp *.h)
