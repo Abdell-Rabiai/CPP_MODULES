@@ -55,13 +55,15 @@ class Array
 
 int main()
 {
+    std::cout << "Creating an array a" << std::endl;
     Array a;
-
     a.set_data(0, 424242);
     a.set_data(2, 1337);
     a.set_data(1, 777777);
 
+    std::cout << "Creating an array b" << std::endl;
     Array b;
+    std::cout << "Assigning a to b" << std::endl;
     b = a; // copy assignemet operator gets called here
     // Array b = a; // copy constructor is used here to create a copy of a
     a.print_data();
