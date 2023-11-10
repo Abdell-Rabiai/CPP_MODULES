@@ -33,6 +33,6 @@ int main()
       cout << "x = " << x.real << " + " << x.imag << "i" << endl;
       complx y(6,6);
       cout << "y = " << y.real << " + " << y.imag << "i" << endl;
-      complx z =       + y; // calls complx::operator+()
+      complx z = x + y; // calls complx::operator+()
      cout << "z = " << z.real << " + " << z.imag << "i" << endl;
 }
