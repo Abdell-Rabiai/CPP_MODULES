@@ -9,19 +9,18 @@ class Array
 
     public:
         Array(){
-            data = new int[10];
+             data = new int[10];
             for (int i = 0; i < 10; i++)
                 data[i] = i * i;
+        }
+        ~Array(){
+            delete[] data;
         }
 
         void print_data(){
             for (int i = 0; i < 10; i++)
                 std::cout << data[i] << " | ";
             std::cout << std::endl;
-        }
-
-        ~Array(){
-            delete[] data;
         }
 
         void set_data(int index, int value){
