@@ -1,22 +1,20 @@
 # include "Fixed.hpp"
-#define RED "\001\033[1;32m\002"
-#define END "\001\033[0m\002\n"
-int main()
+
+
+int main( void ) 
 {
-    std::cout <<RED<<"creating the instance a"<<END<< std::endl;
     Fixed a;
-    std::cout <<RED<<"creating the instance b as a copy of a "<<END<<std::endl;
-    Fixed b(a);
-    std::cout <<RED<<"creating the instance c for which we assign b "<<END<<std::endl;
-    Fixed c;
-    c = b;
-    std::cout << std::endl;
-    std::cout <<RED<<"dispalying the values: the getRawBits functions"<<END<<std::endl;
-    std::cout << a.getRawBits() << std::endl;
-    std::cout << b.getRawBits() << std::endl;
-    std::cout << c.getRawBits() << std::endl;
-
-    std::cout <<RED<<"calling the destructers "<<END<<std::endl;
-
+    Fixed const b( 10 );
+    Fixed const c( 42.42f );
+    Fixed const d( b );
+    a = Fixed( 1234.4321f );
+    std::cout << "a is " << a << std::endl;
+    std::cout << "b is " << b << std::endl;
+    std::cout << "c is " << c << std::endl;
+    std::cout << "d is " << d << std::endl;
+    std::cout << "a is " << a.toInt() << " as integer" << std::endl;
+    std::cout << "b is " << b.toInt() << " as integer" << std::endl;
+    std::cout << "c is " << c.toInt() << " as integer" << std::endl;
+    std::cout << "d is " << d.toInt() << " as integer" << std::endl;
     return 0;
 }
