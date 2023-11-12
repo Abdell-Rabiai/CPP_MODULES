@@ -1,14 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/12 20:47:44 by arabiai           #+#    #+#             */
+/*   Updated: 2023/11/12 20:47:44 by arabiai          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 # include "ex4.hpp"
 
 void read_and_replace(std::ifstream &inputf, std::ofstream &outputf, std::string &s1, std::string &s2)
 {
-    std::string line = "";
-    while (std::getline(inputf, line))
-    {
-        while (line.find(s1) != std::string::npos)
-            line.replace(line.find(s1), s1.length(), s2);
+    std::string line;
+    size_t pos = 0;
+    while (std::getline(inputf, line)) {
+        while ((pos = line.find(s1)) != std::string::npos) {
+            line.erase(pos, s1.length());
+            line.insert(pos, s2);
+        }
         outputf << line << std::endl;
     }
+    inputf.close();
+    outputf.close();
 }
 
 bool parse_arguments(int ac, char **av, std::string &filename, std::string &string1, std::string &string2) {
