@@ -1,4 +1,5 @@
 # include "Fixed.hpp"
+const int Fixed::_fractional_bits = 8;
 
 Fixed::Fixed()
 {
@@ -33,9 +34,9 @@ float Fixed::toFloat(void) const
 }
 
 
-std::ostream &operator<<(std::ostream &out, const Fixed &fixed)
+std::ostream &operator<<(std::ostream &out, const Fixed &rh)
 {
-    out << fixed.toFloat();
+    out << rh.toFloat();
     return out;
 }
 
@@ -122,11 +123,11 @@ Fixed Fixed::operator-(const Fixed &rhs) const
 
 Fixed Fixed::operator*(const Fixed &rhs) const
 {
-    // Fixed result;
-
-    // result._value = (this->_value * rhs._value) / 256;
-    // return (result);
-    return (Fixed(this->toFloat() * rhs.toFloat()));
+    Fixed result;
+    
+    result._value = (this->_value * rhs._value) >> this->_fractional_bits ;
+    return (result);
+    // return (Fixed(this->toFloat() * rhs.toFloat()));
 }
 
 Fixed Fixed::operator/(const Fixed &rhs) const
@@ -138,7 +139,7 @@ Fixed Fixed::operator/(const Fixed &rhs) const
         result._value = 0;
         return (result);
     }
-    result._value = (this->_value * 256) / rhs._value;
+    result._value = (this->_value << this->_fractional_bits / rhs._value);
     return (result);
 }
 

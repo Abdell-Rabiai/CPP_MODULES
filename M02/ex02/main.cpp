@@ -11,6 +11,8 @@ int main( void )
     std::cout << "y_ fixed point represenation value : " << y.getRawBits() << std::endl;
     Fixed z = x * y;
     Fixed const b(z);
+    std::cout << "z_ fixed point represenation value : " << z.getRawBits() << std::endl;
+    std::cout << "b_ fixed point represenation value : " << b.getRawBits() << std::endl;
     std::cout << a << std::endl;
     std::cout << ++a << std::endl;
     std::cout << a << std::endl;

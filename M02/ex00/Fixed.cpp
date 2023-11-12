@@ -1,28 +1,30 @@
 # include "Fixed.hpp"
 
+const int Fixed::_fractional_bits = 8;
+
 Fixed::Fixed() : _value(0)
 {
     std::cout << "Default constructor called" << std::endl;
-    this->_value = 0;
 }
 
-Fixed::Fixed(const int value)
+Fixed::Fixed(const int value) : _value(value)
 {
     std::cout << "parametrized Int constructor called" << std::endl;
-    this->_value = value;
+    // this->_value = value;
 }
 
-Fixed::Fixed(const Fixed &copy)
+Fixed::Fixed(const Fixed &copy) : _value(copy.getRawBits())
 {
     std::cout << "Copy constructor called" << std::endl;
-    this->_value = copy.getRawBits();
+    // this->_value = copy.getRawBits();
     // Or *this = copy;
 }
 
-Fixed &Fixed::operator=(const Fixed &copy)
+Fixed &Fixed::operator=(const Fixed &rhs)
 {
     std::cout << "Copy assignment operator called" << std::endl;
-    this->_value = copy.getRawBits();
+    this->_value = rhs.getRawBits();
+    // or *this = rhs;
     return *this;
 }
 

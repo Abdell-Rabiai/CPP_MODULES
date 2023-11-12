@@ -7,7 +7,7 @@ class Fixed
 {
     private:
         int _value; // An integer to store the fixed-point number value
-        static const int _fractional_bits = 8; // The number of fractional bits
+        static const int _fractional_bits; // The number of fractional bits
     
     public:
         Fixed(); // A default constructor
