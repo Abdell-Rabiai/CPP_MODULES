@@ -6,7 +6,7 @@
 
 class ClapTrap
 {
-    private :
+    protected :
         std::string		_name; // the name of the ClapTrap
         unsigned int	_hitPoints; // the ammount of damage a ClapTrap can take before it dies
         unsigned int	_energyPoints; // the ammount of energy a ClapTrap has available
