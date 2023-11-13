@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 20:48:10 by arabiai           #+#    #+#             */
-/*   Updated: 2023/11/12 20:48:10 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/11/13 01:56:47 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ unsigned int customHash(const std::string& input) {
 void Harl::complain( std::string level )
 {
     // void (X::* ptfptr) (int) = &X::f; X is the class name
-    void (Harl::* my_pointer) (void) = nullptr;   // declare a pointer to a member function void debug (void);
+    void (Harl::* my_pointer) (void) = NULL;   // declare a pointer to a member function void debug (void);
     unsigned int hashed_level = customHash(level);
     std::cout << customHash(level);
     switch (hashed_level)
