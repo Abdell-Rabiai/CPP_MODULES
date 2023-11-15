@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 20:48:10 by arabiai           #+#    #+#             */
-/*   Updated: 2023/11/15 11:15:39 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/11/15 11:28:20 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 Harl::Harl(void)
 {
-    // std::cout << "Harl constructor called" << std::endl;
 }
 
 Harl::~Harl(void)
 {
-    // std::cout << "Harl destructor called" << std::endl;
 }
 
 void Harl::debug(void)
