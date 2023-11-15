@@ -5,25 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/12 20:48:43 by arabiai           #+#    #+#             */
-/*   Updated: 2023/11/15 10:29:43 by arabiai          ###   ########.fr       */
+/*   Created: 2023/11/12 20:48:05 by arabiai           #+#    #+#             */
+/*   Updated: 2023/11/15 11:15:11 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "Zombie.hpp"
+# include "Harl.hpp"
 
-int main()
+int main(void)
 {
-    int N = 5;
-    Zombie *zombies_array = zombieHorde(N, "zombie");
-    if (zombies_array == NULL)
-        return 1;
-    for (int i = 0; i < N; i++){
-        std::cout << "------------------------------------" << std::endl;
-        std::cout << "Zombie number " << i << std::endl;
-        zombies_array[i].announce();
-        std::cout << "------------------------------------" << std::endl;
+    Harl harl;
+    std::cout << "Please enter a level of complain (debug, info, warning, error): \n";
+    while (true)
+    {
+        std::cout << ">> ";
+        std::string level;
+        std::cin >> level;
+        if (level == "EXIT" || std::cin.eof()){
+            std::cin.clear();
+            std::cout << "Exiting ...!" << std::endl;
+            exit(0) ;
+        }
+        harl.complain(level);
     }
-    delete [] zombies_array;
-    return 0;
 }

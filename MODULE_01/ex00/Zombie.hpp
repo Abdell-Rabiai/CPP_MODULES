@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 20:49:08 by arabiai           #+#    #+#             */
-/*   Updated: 2023/11/12 20:49:08 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/11/15 10:03:54 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 
 #include <iostream>
 #include <string>
-// #include <iomanip> // std::setw
-// #include <sstream>
-
 
 class Zombie
 {

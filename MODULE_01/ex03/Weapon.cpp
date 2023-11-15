@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 20:48:16 by arabiai           #+#    #+#             */
-/*   Updated: 2023/11/12 20:48:16 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/11/15 10:45:18 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ Weapon::Weapon(std::string type) : type(type)
 
 Weapon::~Weapon()
 {
-    std::cout << "Weapon destructor called" << std::endl;
+    std::cout << "Weapon destructor called for " << this->type << std::endl;
 }
 
-std::string Weapon::get_type()
+const std::string &Weapon::get_type()
 {
     return (this->type);
 }

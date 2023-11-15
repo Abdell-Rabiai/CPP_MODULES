@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 20:47:44 by arabiai           #+#    #+#             */
-/*   Updated: 2023/11/12 20:47:44 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/11/15 11:08:42 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@ void read_and_replace(std::ifstream &inputf, std::ofstream &outputf, std::string
 {
     std::string line;
     size_t pos = 0;
+    if (s1.empty()){
+        std::cout << "Error: string to replace is empty" << std::endl; 
+        return ;
+    }
     while (std::getline(inputf, line)) {
         while ((pos = line.find(s1)) != std::string::npos) {
             line.erase(pos, s1.length());
@@ -62,6 +66,10 @@ int main(int ac, char **av) {
     if (!parse_arguments(ac, av, filename, string1, string2))
         return 1;
     new_filename = filename + ".replace";
+    if (string1.compare(string2) == 0) {
+        std::cout << "Error: strings are the same, nothing to change" << std::endl;
+        return 1;
+    }
     std::ifstream input_file;
     std::ofstream output_file;
     if (!create_files(filename, new_filename, input_file, output_file))

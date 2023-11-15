@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 20:49:00 by arabiai           #+#    #+#             */
-/*   Updated: 2023/11/12 20:49:00 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/11/15 10:09:29 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 Zombie *newZombie(std::string name)
 {
     Zombie *zombie = new Zombie(name);
-    zombie->set_name(name);
-    return zombie;
+    return (zombie);
 }
 

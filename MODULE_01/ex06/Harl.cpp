@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 20:48:10 by arabiai           #+#    #+#             */
-/*   Updated: 2023/11/15 11:12:29 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/11/15 11:15:39 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,27 +24,27 @@ Harl::~Harl(void)
 
 void Harl::debug(void)
 {
-    std::cout << "\nDEBUG : I love having extra bacon for my 7XL-double-cheese-triple-pickle-specialketchup burger. I really do!\n\n" << std::endl;
+    std::cout << "\n[ DEBUG ]I love having extra bacon for my 7XL-double-cheese-triple-pickle-specialketchup burger. I really do!\n" << std::endl;
 }
 
 void Harl::info(void)
 {
-    std::cout << "\nINFO : I cannot believe adding extra bacon cost more money. You don’t put enough! If you did I would not have to ask for it!\n" << std::endl;
+    std::cout << "\n[ INFO ] : I cannot believe adding extra bacon cost more money. You don’t put enough! If you did I would not have to ask for it!\n" << std::endl;
 }
 
 void Harl::warning(void)
 {
-    std::cout << "\nWARNING : I think I deserve to have some extra bacon for free. I’ve been coming here for years and you just started working here last month.\n" << std::endl;
+    std::cout << "\n[ WARNING ] : I think I deserve to have some extra bacon for free. I’ve been coming here for years and you just started working here last month.\n" << std::endl;
 }
 
 void Harl::error(void)
 {
-    std::cout << "\nERROR : This is unacceptable, I want to speak to the manager now.\n" << std::endl;
+    std::cout << "\n[ ERROR ] : This is unacceptable, I want to speak to the manager now.\n" << std::endl;
 }
 
 void Harl::invalid(void)
 {
-    std::cout << "\nINVALID input, Wrong level of complain!\n" << std::endl;
+    std::cout << "\n[ Probably complaining about insignificant problems! ]\n" << std::endl;
 }
 
 unsigned int customHash(const std::string& input) {
@@ -58,28 +58,19 @@ unsigned int customHash(const std::string& input) {
 
 void Harl::complain( std::string level )
 {
-    // void (X::* ptfptr) (int) = &X::f; X is the class name
-    void (Harl::* my_pointer) (void) = NULL;
     unsigned int hashed_level = customHash(level);
-    std::cout << customHash(level);
     switch (hashed_level)
     {
-        case 190835: // 190835 represents "debug"
-            my_pointer = &Harl::debug;
-            break;
-        case 29430: // 29430 represents "info"
-            my_pointer = &Harl::info;
-            break ;
-        case 198448: // 198448 represents "error"
-            my_pointer = &Harl::error;
-            break ;
-        case 11555748: // 11555748 represents "warning"
-            my_pointer = &Harl::warning;
+        case 190835:
+            Harl::debug();
+        case 29430:
+            Harl::info();
+        case 11555748:
+            Harl::warning();
+        case 198448:
+            Harl::error();
             break ;
         default:
-            my_pointer = &Harl::invalid;
-            break ;
+            Harl::invalid();
     }
-    if (my_pointer != NULL)
-        (this->*my_pointer)();
 }

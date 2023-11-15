@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 20:48:28 by arabiai           #+#    #+#             */
-/*   Updated: 2023/11/12 20:48:28 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/11/15 10:52:25 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@ class HumanA
 {
     private:
         std::string name;
-        Weapon &weapon; // reference to a Weapon object (composition)
+        Weapon &weapon;
     
     public:
-     
         HumanA(std::string name, Weapon &weapon);
         ~HumanA();
         void attack();

@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 20:48:13 by arabiai           #+#    #+#             */
-/*   Updated: 2023/11/12 20:48:13 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/11/14 19:21:19 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Weapon
         Weapon(); // default constructor
         Weapon(std::string type); // parameterized constructor
         ~Weapon(); // destructor
-        std::string get_type();
+        const std::string &get_type();
         void set_type(std::string type);    
 };
 

@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 20:48:05 by arabiai           #+#    #+#             */
-/*   Updated: 2023/11/12 20:48:05 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/11/15 11:15:16 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int main(void)
         std::string level;
         std::cin >> level;
         if (level == "EXIT" || std::cin.eof()){
-            std::cin.ignore();
             std::cin.clear();
             std::cout << "Exiting ...!" << std::endl;
             exit(0) ;
