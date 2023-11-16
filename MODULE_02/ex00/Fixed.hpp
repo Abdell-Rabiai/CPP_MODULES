@@ -15,7 +15,7 @@ class Fixed
 
         Fixed(const Fixed &copy); // A copy constructor
         Fixed &operator=(const Fixed &copy); // An assignation operator overload
-
+        
         ~Fixed(); // A destructor
 
         int getRawBits(void) const; // A member function to return the raw value of the fixed point value

@@ -1,5 +1,5 @@
 # include "Fixed.hpp"
-const int _fractional_bits = 8;
+const int Fixed::_fractional_bits = 8;
 
 Fixed::Fixed() : _value(0)
 {
@@ -10,8 +10,7 @@ Fixed::Fixed(const int value)
 {
     std::cout << "Int constructor called" << std::endl;
     this->_value = value << this->_fractional_bits;
-    std::cout << "this->_value : " << this->_value << std::endl;
-    // this->_value = value * 256;
+    // this->_value = value * 256; // 2^8
 }
 
 Fixed::Fixed(const float value)

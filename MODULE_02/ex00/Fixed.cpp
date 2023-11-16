@@ -13,10 +13,10 @@ Fixed::Fixed(const int value) : _value(value)
     // this->_value = value;
 }
 
-Fixed::Fixed(const Fixed &copy) : _value(copy.getRawBits())
+Fixed::Fixed(const Fixed &copy)
 {
     std::cout << "Copy constructor called" << std::endl;
-    // Or *this = copy;
+    *this = copy;
 }
 
 Fixed &Fixed::operator=(const Fixed &rhs)

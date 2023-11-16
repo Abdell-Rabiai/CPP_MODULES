@@ -50,8 +50,7 @@ Fixed::Fixed(const Fixed &copy)
 Fixed &Fixed::operator=(const Fixed &copy)
 {
     // std::cout << "Copy assignment operator called" << std::endl;
-    // this->_value = copy.getRawBits();
-    this->_value = copy._value;
+    this->_value = copy.getRawBits();
     return *this;
 }
 
@@ -194,3 +193,4 @@ const Fixed &Fixed::max(const Fixed &a, const Fixed &b)
 {
     return (a > b ? a : b);
 }
+
