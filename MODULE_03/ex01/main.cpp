@@ -2,9 +2,9 @@
 # include "ScavTrap.hpp"
 int main(void)
 {
-    ScavTrap    scavTrap("******");
+    ScavTrap scavTrap("A");
     scavTrap.guardGate();
-    scavTrap.attack("$$$$$$");
+    scavTrap.attack("B");
     scavTrap.takeDamage(5);
     scavTrap.beRepaired(5);
     return (0);

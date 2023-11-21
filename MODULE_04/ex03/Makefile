@@ -1,4 +1,4 @@
-SOURCE_NAME = ex00
+SOURCE_NAME = ex03
 
 SOURCE_FILES = $(wildcard *.cpp)
 HEADER_FILES = $(wildcard *.hpp *.h)
