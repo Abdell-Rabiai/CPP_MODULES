@@ -1,17 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/21 16:02:27 by arabiai           #+#    #+#             */
+/*   Updated: 2023/11/21 16:02:27 by arabiai          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 # include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap() : ClapTrap("default_name")
+ScavTrap::ScavTrap() : ClapTrap()
 {
     std::cout << "ScavTrap default constructor called" << std::endl;
-    // these initializations below are not necessary
-    // this->_hitPoints = 100;
-    // this->_energyPoints = 50;
-    // this->_attackDamage = 20;
+    this->_name = "default_name";
+    this->_hitPoints = 100;
+    this->_energyPoints = 50;
+    this->_attackDamage = 20;
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
     std::cout << "ScavTrap parametrized constructor called for " << name << std::endl;
+    this->_name = name;
+    this->_hitPoints = 100;
+    this->_energyPoints = 50;
+    this->_attackDamage = 20;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& rhs)

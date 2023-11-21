@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/21 16:02:57 by arabiai           #+#    #+#             */
+/*   Updated: 2023/11/21 16:02:57 by arabiai          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 # include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap() : _name("default_name"), _hitPoints(100), _energyPoints(100), _attackDamage(30)
+ClapTrap::ClapTrap() : _name("default_name"), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
     std::cout << "ClapTrap default constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(100), _energyPoints(100), _attackDamage(30)
+ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
     std::cout << "ClapTrap parametrized constructor called" << std::endl;
 }

@@ -1,21 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/21 16:02:36 by arabiai           #+#    #+#             */
+/*   Updated: 2023/11/21 16:02:36 by arabiai          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 # include "FragTrap.hpp"
 
 FragTrap::FragTrap() : ClapTrap()
 {
     std::cout << "FragTrap default constructor called" << std::endl;
-    // not necessary
-    // this->_hitPoints = 100;
-    // this->_energyPoints = 100;
-    // this->_attackDamage = 30;
+    this->_name = "default_name";
+    this->_hitPoints = 100;
+    this->_energyPoints = 100;
+    this->_attackDamage = 30;
 }
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
     std::cout << "FragTrap parameter constructor called" << std::endl;
-    // not necessary, they've been already initialized in the ClapTrap constructor
-    // this->_hitPoints = 100;
-    // this->_energyPoints = 100;
-    // this->_attackDamage = 30;
+    this->_name = name;
+    this->_hitPoints = 100;
+    this->_energyPoints = 100;
+    this->_attackDamage = 30;
 }
 
 FragTrap::FragTrap(const FragTrap& rhs) : ClapTrap(rhs)

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/21 16:02:00 by arabiai           #+#    #+#             */
+/*   Updated: 2023/11/21 16:02:00 by arabiai          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 # include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap() : _name("default_name"), _hitPoints(10), _energyPoints(10), _attackDamage(0)
@@ -73,45 +85,3 @@ void	ClapTrap::beRepaired(unsigned int amount)
     this->_energyPoints -= 1;
 }
 
-// getters
-const std::string	&ClapTrap::getName() const
-{
-    return (this->_name);
-}
-
-unsigned int	ClapTrap::getHitPoints() const
-{
-    return (this->_hitPoints);
-}
-
-unsigned int	ClapTrap::getEnergyPoints() const
-{
-    return (this->_energyPoints);
-}
-
-unsigned int	ClapTrap::getAttackDamage() const
-{
-    return (this->_attackDamage);
-}
-
-// setters
-
-void	ClapTrap::setName(std::string name)
-{
-    this->_name = name;
-}
-
-void	ClapTrap::setHitPoints(unsigned int hitPoints)
-{
-    this->_hitPoints = hitPoints;
-}
-
-void	ClapTrap::setEnergyPoints(unsigned int energyPoints)
-{
-    this->_energyPoints = energyPoints;
-}
-
-void	ClapTrap::setAttackDamage(unsigned int attackDamage)
-{
-    this->_attackDamage = attackDamage;
-}

@@ -12,7 +12,7 @@ class Animal
         Animal(const Animal &copy);
         Animal &operator=(const Animal &copy);
 
-        virtual ~Animal();
+        ~Animal();
         std::string getType() const;
         void setType(std::string type);
         virtual void makeSound() const;

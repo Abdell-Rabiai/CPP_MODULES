@@ -1,11 +1,11 @@
-SOURCE_NAME = ex00
+SOURCE_NAME = ex01
 
 SOURCE_FILES = $(wildcard *.cpp)
 HEADER_FILES = $(wildcard *.hpp *.h)
 
 OBJECT_FILES = $(SOURCE_FILES:.cpp=.o)
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
 
 all : $(SOURCE_NAME)
 

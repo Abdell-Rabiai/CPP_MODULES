@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/21 16:02:29 by arabiai           #+#    #+#             */
+/*   Updated: 2023/11/21 16:02:29 by arabiai          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SCAVTRAP_HPP
 # define SCAVTRAP_HPP
 # include "ClapTrap.hpp"
@@ -16,7 +28,7 @@ class ScavTrap : public ClapTrap
         ~ScavTrap(); 
         
         void    guardGate(); 
-        void    attack(std::string const& target); 
+        void    attack(std::string const& target);
 };
 
 #endif //SCAVTRAP_HPP
