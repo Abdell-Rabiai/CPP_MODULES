@@ -1,9 +1,12 @@
-SOURCE_NAME = ex02
+SOURCE_NAME = ex01
+OBJECT_DIR = .ex01objs
+ODIR = .ex01objs
 
 SOURCE_FILES = $(wildcard *.cpp)
 HEADER_FILES = $(wildcard *.hpp *.h)
 
-OBJECT_FILES = $(SOURCE_FILES:.cpp=.o)
+OBJECT_FILES = $(addprefix $(OBJECT_DIR)/, $(SOURCE_FILES:.cpp=.o)) 
+
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
@@ -12,11 +15,12 @@ all : $(SOURCE_NAME)
 $(SOURCE_NAME) : $(OBJECT_FILES)
 	$(CC) $(OBJECT_FILES) $(CFLAGS) -o $(SOURCE_NAME)
 
-%.o: %.cpp $(HEADER_FILES)
+$(OBJECT_DIR)/%.o: %.cpp $(HEADER_FILES)
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean :
-	rm -rf $(OBJECT_FILES)
+	rm -rf $(OBJECT_DIR)
 
 fclean : clean
 	rm -rf $(SOURCE_NAME)
