@@ -1,7 +1,7 @@
 # ifndef DOG_HPP
 # define DOG_HPP
-# include "Brain.hpp"
 # include "Animal.hpp"
+# include "Brain.hpp"
 
 class Dog : public Animal
 {
@@ -10,6 +10,7 @@ class Dog : public Animal
 
     public:
         Dog();
+        Dog(Brain *brain);
         Dog(const Dog &copy);
         Dog &operator=(const Dog &copy);
         ~Dog();

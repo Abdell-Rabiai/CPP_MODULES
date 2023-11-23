@@ -5,11 +5,12 @@
 
 class Cat : public Animal
 {
-    private :
+    private:
         Brain *brain;
-        
+
     public:
         Cat();
+        Cat(Brain *brain);
         Cat(const Cat &copy);
         Cat &operator=(const Cat &copy);
         ~Cat();

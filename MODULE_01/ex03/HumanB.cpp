@@ -6,25 +6,25 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 20:48:26 by arabiai           #+#    #+#             */
-/*   Updated: 2023/11/15 10:54:37 by arabiai          ###   ########.fr       */
+/*   Updated: 2023/11/22 18:04:03 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "HumanB.hpp"
 
-HumanB::HumanB() : name("default") weapon(NULL)
+HumanB::HumanB() : name("default"), weapon(NULL)
 {
     std::cout << "HumanB default constructor called for " << this->name << std::endl;
 }
 
-HumanB::HumanB(std::string name) : name(name) weapon(NULL)
+HumanB::HumanB(std::string name) : name(name), weapon(NULL)
 {
     std::cout << "HumanB parameterized constructor called for " << this->name << std::endl;
 }
 
 HumanB::~HumanB()
 {
-    std::cout << "HumanB destructor called for " << this->name << std::endl;
+    std::cout << "HumanB destructor~ called for " << this->name << std::endl;
 }
 
 void HumanB::attack()

@@ -1,14 +1,24 @@
 # include "Cat.hpp"
-# include "Brain.hpp"
 
 Cat::Cat() : Animal("Cat")
 {
-    try {
-        this->brain = new Brain();
-    } catch (std::bad_alloc &exp) {
-        std::cout << exp.what() << std::endl;
-    }
     std::cout << "Cat_default constructor called" << std::endl;
+    this->brain = new Brain();
+}
+
+Cat::Cat(Brain *brain) : Animal("Cat")
+{
+    if (brain == NULL){
+        try {
+            this->brain = new Brain();
+        }
+        catch (std::bad_alloc &exp) {
+            std::cout << exp.what() << std::endl;
+        }
+    }
+    else
+        this->brain = brain;
+    std::cout << "Cat_parameterized constructor called" << std::endl;
 }
 
 Cat::Cat(const Cat &copy)
@@ -17,23 +27,28 @@ Cat::Cat(const Cat &copy)
     *this = copy;
 }
 
-Cat &Cat::operator=(const Cat &copy)
+Cat &Cat::operator=(const Cat &rhs)
 {
     std::cout << "Cat assignement operator called" << std::endl;
-    this->type = copy.type;
+    this->type = rhs.type;
     this->type.append("_copy");
-    this->brain = new Brain(*copy.brain);
+    try {
+        this->brain = new Brain(*rhs.brain); // this is a deep copy
+    }
+    catch (std::bad_alloc &exp) {
+        std::cout << exp.what() << std::endl;
+    }
     return (*this);
 }
 
 Cat::~Cat()
 {
+    std::cout << "Cat_destructor called" << std::endl;
     if (this->brain)
         delete this->brain;
-    std::cout << "Cat destructor called" << std::endl;
 }
 
 void Cat::makeSound() const
 {
-    std::cout << "MIAOU MIAOU !!" << std::endl;
+    std::cout << "Meow Meow !!!" << std::endl;
 }
