@@ -31,6 +31,7 @@ Dog::Dog(Brain *brain) : Animal("Dog")
 Dog::Dog(const Dog &copy)
 {
     std::cout << "Dog copy constructor called" << std::endl;
+    this->brain = NULL;
     *this = copy;
 }
 

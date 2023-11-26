@@ -1,5 +1,5 @@
 SOURCE_NAME = ex02
-OBJECT_DIR = .ex01objs
+OBJECT_DIR = .ex02objs
 ODIR = .ex01objs
 
 SOURCE_FILES = $(wildcard *.cpp)

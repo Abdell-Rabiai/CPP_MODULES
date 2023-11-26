@@ -31,6 +31,7 @@ Dog::Dog(Brain *brain) : Animal("Dog")
 Dog::Dog(const Dog &copy)
 {
     std::cout << "Dog copy constructor called" << std::endl;
+    this->brain = NULL;
     *this = copy;
 }
 
@@ -39,8 +40,9 @@ Dog &Dog::operator=(const Dog &rhs)
     std::cout << "Dog assignement operator called" << std::endl;
     // deep copy of object rhs to this
     this->type = rhs.type;
-    this->type.append("_copy");
     try {
+        if (this->brain)
+            delete this->brain;
         this->brain = new Brain(*rhs.brain); // this is a deep copy
     }
     catch (std::bad_alloc &exp) {

@@ -25,6 +25,8 @@ void free_materia_list(t_materia **materia)
     t_materia *current;
     t_materia *next;
 
+    if (!(*materia))
+        return ;
     current = *materia;
     while (current)
     {
@@ -54,6 +56,8 @@ Character::Character(std::string const & name) : _name(name)
 Character::Character(const Character &rhs)
 {
     // std::cout << "Character copy constructor called" << std::endl;
+    for (int i = 0; i < 4; i++)
+        this->_slots[i] = NULL;
     *this = rhs;
 }
 
@@ -67,7 +71,7 @@ Character &Character::operator=(const Character &rhs)
         {
             if (this->_slots[i])
                 delete this->_slots[i];
-            this->_slots[i] = rhs._slots[i]->clone();
+            this->_slots[i] = rhs._slots[i] ? rhs._slots[i]->clone() : NULL;
         }
     }
     return (*this);
@@ -96,13 +100,11 @@ void Character::equip(AMateria *materia)
 {
     for (int i = 0; i < 4; i++)
     {
-        if (!this->_slots[i])
+        if (!this->_slots[i] && materia)
         {
-            this->_slots[i] = materia; // 
-            // this should not be deep copy because we the materia passed to this function is already a deep copy of the materia at the source
-            // and we want the this->_slots[i] to point to the same materia as the materia at the source
-            // so at the end the destructor of the materia at the source will be called and the materia at this->_slots[i] will be deleted
+            this->_slots[i] = materia->clone();
             std::cout << "the Materia {" << materia->getType() << "} Equiped at slot ["<< i <<"] Successfully for " << this->getName() << std::endl;
+            delete materia;
             return ;
         }
     }
@@ -122,7 +124,6 @@ void Character::unequip(int index)
             return ;
         }
     }
-
 }
 
 void Character::use(int index, ICharacter &target)

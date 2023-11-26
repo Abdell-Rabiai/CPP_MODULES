@@ -24,6 +24,7 @@ Cat::Cat(Brain *brain) : Animal("Cat")
 Cat::Cat(const Cat &copy)
 {
     std::cout << "Cat copy constructor called" << std::endl;
+    this->brain = NULL;
     *this = copy;
 }
 
@@ -31,8 +32,9 @@ Cat &Cat::operator=(const Cat &rhs)
 {
     std::cout << "Cat assignement operator called" << std::endl;
     this->type = rhs.type;
-    this->type.append("_copy");
     try {
+        if (this->brain)
+            delete this->brain;
         this->brain = new Brain(*rhs.brain); // this is a deep copy
     }
     catch (std::bad_alloc &exp) {

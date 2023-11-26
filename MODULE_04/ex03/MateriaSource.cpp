@@ -16,8 +16,11 @@ MateriaSource::MateriaSource(AMateria **materias)
 
 MateriaSource::MateriaSource(MateriaSource const &rhs)
 {
-    if (this != &rhs)
+    if (this != &rhs) {
+        for (int i = 0; i < 4; i++)
+            this->_materias[i] = NULL;
         *this = rhs;
+    }
 }
 
 MateriaSource &MateriaSource::operator=(MateriaSource const &rhs)
@@ -28,7 +31,7 @@ MateriaSource &MateriaSource::operator=(MateriaSource const &rhs)
         {
             if (this->_materias[i])
                 delete this->_materias[i];
-            this->_materias[i] = rhs._materias[i]->clone();
+            this->_materias[i] = rhs._materias[i] ? rhs._materias[i]->clone() : NULL;
         }
     }
     return (*this);
@@ -45,10 +48,11 @@ void MateriaSource::learnMateria(AMateria *m)
 {
     for (int i = 0; i < 4; i++)
     {
-        if (!this->_materias[i])
+        if (!this->_materias[i] && m)
         {
-            this->_materias[i] = m;
+            this->_materias[i] = m->clone();
             std::cout << "the Materia {" << m->getType() << "} Added at Source ["<< i <<"] Successfully" << std::endl;
+            delete m;
             return ;
         }
     }
@@ -65,5 +69,6 @@ AMateria *MateriaSource::createMateria(std::string const &type)
             return (this->_materias[i]->clone());
         }
     }
+    std::cout << "the Materia {" << type << "} Not Found at Source, Be Careful!! " << std::endl;
     return (NULL);
 }
