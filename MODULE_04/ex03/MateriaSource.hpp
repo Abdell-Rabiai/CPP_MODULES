@@ -9,6 +9,7 @@ class MateriaSource : public IMateriaSource
 
     public:
         MateriaSource();
+        MateriaSource(AMateria **materias);
         MateriaSource(MateriaSource const &other);
         virtual ~MateriaSource();
         MateriaSource &operator=(MateriaSource const &other);

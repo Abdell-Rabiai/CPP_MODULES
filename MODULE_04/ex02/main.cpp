@@ -2,15 +2,15 @@
 # include "Dog.hpp"
 # include "Cat.hpp"
 
-void lk(void){ system("leaks ex01"); }
+void lk(void){ system("leaks ex02"); }
 
 int main()
 {
     atexit (lk);
-    {
-        const Animal* meta = new Animal(); // this cannot be done anymore since the constructor is protected we cannot create an Animal object directly
-        delete meta;
-    }
+    // {
+    //     const Animal* meta = new Animal(); // this cannot be done anymore since the constructor is protected we cannot create an Animal object directly
+    //     delete meta;
+    // }
     std::cout << "---------------------" << std::endl;
     {
         const Animal* dog = new Dog();

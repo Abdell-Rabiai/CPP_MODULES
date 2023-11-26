@@ -23,7 +23,7 @@ int main()
         delete dog;
         delete cat;
     }
-    std::cout << "\n*****************************************************************\n" << std::endl;
+    std::cout << "\n*************************** *WRONG ANIMAL WITHOUT VIRTUAL* ************************************\n" << std::endl;
 
     {
         const WrongAnimal* meta = new WrongAnimal();

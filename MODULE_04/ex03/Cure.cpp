@@ -38,5 +38,5 @@ AMateria* Cure::clone() const
 
 void Cure::use(ICharacter& target)
 {
-    std::cout << "* heals {" << target.getName() << "}'s wounds *" << std::endl;
+    std::cout << "\001\033[1;32m\002[ * heals " << target.getName() << "'s wounds * ]\001\033[0m\002\n" << std::endl;
 }

@@ -11,9 +11,10 @@ class Cat : public Animal
     public:
         Cat();
         Cat(Brain *brain);
-        Cat(const Cat &copy);
-        Cat &operator=(const Cat &copy);
+        Cat(const Cat &rhs);
+        Cat &operator=(const Cat &rhs);
         ~Cat();
+
         void makeSound() const; // override is c++11 feature; it could have been void makeSound() const override
 };
 

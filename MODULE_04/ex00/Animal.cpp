@@ -2,13 +2,13 @@
 
 Animal::Animal() : type("GENERIC_ANIMAL")
 {
-    std::cout << "Animal_default constructor called" << std::endl;
+    std::cout << "Animal_default constructor called for " << this->type << std::endl;
 }
 
 Animal::Animal(std::string type)
 {
-    std::cout << "Animal_parametrized constructor called" << std::endl;
     this->type = type;
+    std::cout << "Animal_parametrized constructor called for " << this->type << std::endl;
 }
 
 Animal::Animal(const Animal &copy)
@@ -26,7 +26,7 @@ Animal &Animal::operator=(const Animal &copy)
 
 Animal::~Animal()
 {
-    std::cout << "Animal_destructor called" << std::endl;
+    std::cout << "Animal_destructor called for " << this->type << std::endl;
 }
 
 std::string Animal::getType() const

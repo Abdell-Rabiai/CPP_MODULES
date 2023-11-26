@@ -19,7 +19,7 @@ $(OBJECT_DIR)/%.o: %.cpp $(HEADER_FILES)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean :
-	rm -rf $(OBJECT_FILES) $(Object_dir)
+	rm -rf $(OBJECT_FILES) $(OBJECT_DIR)
 
 fclean : clean
 	rm -rf $(SOURCE_NAME)

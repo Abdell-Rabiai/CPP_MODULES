@@ -10,6 +10,7 @@ class Cat : public Animal
         Cat &operator=(const Cat &copy);
         ~Cat();
         void makeSound() const; // override is c++11 feature; it could have been void makeSound() const override
+        // to indicate that it is overriding a virtual function up in the base class
 };
 
 # endif // CAT_HPP

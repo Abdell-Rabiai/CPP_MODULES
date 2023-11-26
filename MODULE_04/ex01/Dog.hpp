@@ -11,8 +11,8 @@ class Dog : public Animal
     public:
         Dog();
         Dog(Brain *brain);
-        Dog(const Dog &copy);
-        Dog &operator=(const Dog &copy);
+        Dog(const Dog &rhs);
+        Dog &operator=(const Dog &rhs);
         ~Dog();
         void makeSound() const; // override is c++11 feature; it could have been void makeSound() const override
 };

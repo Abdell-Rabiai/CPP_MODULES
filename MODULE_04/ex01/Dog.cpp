@@ -39,7 +39,8 @@ Dog &Dog::operator=(const Dog &rhs)
     std::cout << "Dog assignement operator called" << std::endl;
     // deep copy of object rhs to this
     this->type = rhs.type;
-    this->type.append("_copy");
+    if (this->brain)
+        delete this->brain;
     try {
         this->brain = new Brain(*rhs.brain); // this is a deep copy
     }

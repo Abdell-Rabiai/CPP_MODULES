@@ -1,4 +1,4 @@
-SOURCE_NAME = ex01
+SOURCE_NAME = ex02
 OBJECT_DIR = .ex01objs
 ODIR = .ex01objs
 
