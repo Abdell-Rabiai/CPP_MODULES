@@ -1,10 +1,11 @@
 # include "Fixed.hpp"
 
 int main( void ) {
-    float x = 45;
+    float x = 1337.94289;
     Fixed a(x);
     std::cout << "a : " << a << std::endl;
     std::cout << "a : " << a.getRawBits() << std::endl;
+    std::cout << "a : " << a.toFloat() << std::endl;
     // Fixed const b( 10 );
     // Fixed const c( 42.42f );
     // Fixed const d( b );

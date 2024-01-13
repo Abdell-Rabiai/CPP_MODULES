@@ -72,7 +72,7 @@ void Fixed::setRawBits(int const raw)
 }
 
 // Comparison operators overload
-bool Fixed::operator>(const Fixed &rhs) const
+bool Fixed::operator>(const Fixed &rhs)
 {
     return (this->_value > rhs._value);
 }
