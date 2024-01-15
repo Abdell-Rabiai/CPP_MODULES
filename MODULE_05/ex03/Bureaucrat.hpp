@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:36:32 by arabiai           #+#    #+#             */
-/*   Updated: 2024/01/14 16:35:51 by arabiai          ###   ########.fr       */
+/*   Updated: 2024/01/13 21:16:05 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 # include <iostream>
 # include <string>
 # include <exception>
+# include <stdexcept>
+# include "AForm.hpp"
+
+class AForm;
 
 class Bureaucrat
 {
@@ -35,12 +39,16 @@ class Bureaucrat
 
         void incrementGrade();
         void decrementGrade();
+        
+        void signForm(AForm & form);
+        void executeForm(AForm const & form);
 
         class GradeTooHighException : public std::exception
         {
             public:
                 virtual const char * what() const throw();
         };
+
         class GradeTooLowException : public std::exception
         {
             public:

@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:36:35 by arabiai           #+#    #+#             */
-/*   Updated: 2024/01/14 19:40:29 by arabiai          ###   ########.fr       */
+/*   Updated: 2024/01/13 21:16:44 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,3 +81,28 @@ std::ostream & operator<<(std::ostream & out, Bureaucrat const & rhs)
     return (out);
 }
 
+void Bureaucrat::signForm(AForm & form)
+{
+    try
+    {
+        form.beSigned(*this);
+        std::cout << this->getName() << " SIGNED " << form.getName() << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << this->getName() << " COULDN'T SIGN " << form.getName() << " BECAUSE " << e.what() << std::endl;
+    }
+}
+
+void Bureaucrat::executeForm(AForm const & form)
+{
+    try
+    {
+        form.execute(*this);
+        std::cout << this->getName() << " EXECUTED " << form.getName() << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << this->getName() << " COULDN'T EXECUTE " << form.getName() << " BECAUSE " << e.what() << std::endl;
+    }
+}
