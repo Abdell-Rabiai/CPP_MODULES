@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:36:35 by arabiai           #+#    #+#             */
-/*   Updated: 2024/01/14 19:40:29 by arabiai          ###   ########.fr       */
+/*   Updated: 2024/01/30 11:40:33 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,10 @@ void Bureaucrat::incrementGrade()
     if (this->_grade - 1 < 1)
         throw Bureaucrat::GradeTooHighException();
     else
-        this->_grade--; // Remember. Since grade 1 is the highest one and 150 the lowest,
+        this->_grade--;
+    // Remember. Since grade 1 is the highest one and 150 the lowest,
     // incrementing a grade 3 should give a grade 2 to the bureaucrat.
+    // decrementing a grade 3 should give a grade 4 to the bureaucrat.
 }
 
 void Bureaucrat::decrementGrade()
@@ -65,15 +67,21 @@ void Bureaucrat::decrementGrade()
         this->_grade++;
 }
 
+const char * Bureaucrat::BureaucratException::what() const throw()
+{
+    return ("OOps! Something went wrong\n"); // this is a more generic approach (we don't specify if the grade is too high or too low)
+}
+
 const char * Bureaucrat::GradeTooHighException::what() const throw()
 {
-    return ("OOps! TOO HIGH\n");
+    return ("OOps! TOO HIGH\n"); // this is more specific (we specify that the grade is too high)
 }
 
 const char * Bureaucrat::GradeTooLowException::what() const throw()
 {
-    return ("OOps! TOO LOW\n");
+    return ("OOps! TOO LOW\n"); // this is more specific (we specify that the grade is too low)
 }
+
 
 std::ostream & operator<<(std::ostream & out, Bureaucrat const & rhs)
 {

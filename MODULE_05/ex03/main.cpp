@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:36:28 by arabiai           #+#    #+#             */
-/*   Updated: 2024/01/15 11:31:09 by arabiai          ###   ########.fr       */
+/*   Updated: 2024/01/30 13:27:00 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@ int main()
 {
     try
     {
-        Intern someRandomIntern;
-        AForm* rrf;
-        // rrf = someRandomIntern.makeForm("sss request", "Bender");
-        rrf = someRandomIntern.makeForm("robotomy request", "Bender");
-        std:: cout << "{the form below has been created by an intern}\n" << std::endl;
-        std::cout << *rrf << std::endl;
+        Intern inter;
+        Bureaucrat tabi3a("tabi3a", 30);
+        AForm* f;
+        // f = someRandomIntern.makeForm("sss request", "tabi3a");
+        f = inter.makeForm("presidential request", "tabi3a");
+        std::cout << *f << std::endl;
+        f->execute(tabi3a);
+        delete f;
     }
     catch(const std::exception& e)
     {

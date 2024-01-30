@@ -1,8 +1,8 @@
 # include "AForm.hpp"
 
-AForm::AForm() : _name("default"), _signed(false), _SignGrade(150), _ExecuteGrade(150) { }
+AForm::AForm() : _name("default"), _formStatus(false), _SignRequiredToGrade(150), _SignRequiredToExecute(150) { }
 
-AForm::AForm(const std::string name, const int SignGrade, const int ExecuteGrade) : _name(name), _signed(false), _SignGrade(SignGrade), _ExecuteGrade(ExecuteGrade)
+AForm::AForm(const std::string name, const int SignGrade, const int ExecuteGrade) : _name(name), _formStatus(false), _SignRequiredToGrade(SignGrade), _SignRequiredToExecute(ExecuteGrade)
 {
     if (SignGrade < 1 || ExecuteGrade < 1)
         throw AForm::GradeTooHighException();
@@ -10,14 +10,14 @@ AForm::AForm(const std::string name, const int SignGrade, const int ExecuteGrade
         throw AForm::GradeTooLowException();
 }
 
-AForm::AForm(const AForm& rhs) : _name(rhs._name), _signed(rhs._signed), _SignGrade(rhs._SignGrade), _ExecuteGrade(rhs._ExecuteGrade) { }
+AForm::AForm(const AForm& rhs) : _name(rhs._name), _formStatus(rhs._formStatus), _SignRequiredToGrade(rhs._SignRequiredToGrade), _SignRequiredToExecute(rhs._SignRequiredToExecute) { }
 
 AForm::~AForm() { }
 
 AForm & AForm::operator=(const AForm& rhs)
 {
     if (this != &rhs)
-        this->_signed = rhs._signed;
+        this->_formStatus = rhs._formStatus;
     return (*this);
 }
 
@@ -26,27 +26,27 @@ const std::string	AForm::getName() const
     return (this->_name);
 }
 
-bool    AForm::getSigned() const
+bool    AForm::getIsFormSigned() const
 {
-    return (this->_signed);
+    return (this->_formStatus);
 }
 
 int		AForm::getGradeToSign() const
 {
-    return (this->_SignGrade);
+    return (this->_SignRequiredToGrade);
 }
 
 int		AForm::getGradeToExecute() const
 {
-    return (this->_ExecuteGrade);
+    return (this->_SignRequiredToExecute);
 }
 
 void	AForm::beSigned(const Bureaucrat& bureaucrat)
 {
-    if (bureaucrat.getGrade() > this->_SignGrade)
+    if (bureaucrat.getGrade() > this->_SignRequiredToGrade)
         throw AForm::GradeTooLowException();
     else
-        this->_signed = true;
+        this->_formStatus = true;
 }
 
 const char*	AForm::GradeTooHighException::what() const throw()
@@ -61,7 +61,7 @@ const char*	AForm::GradeTooLowException::what() const throw()
 
 const char*	AForm::FormNotSignedException::what() const throw()
 {
-    return ("Form not signed yet");
+    return ("Exception: Form not signed yet");
 }
 
 std::ostream & operator<<(std::ostream & out, AForm const & rhs)
@@ -69,6 +69,6 @@ std::ostream & operator<<(std::ostream & out, AForm const & rhs)
     out << "THE AFORM'S NAME IS: {" << rhs.getName() << "}" <<std::endl;
     out << "THE AFORM'S SIGN GRADE IS: {" << rhs.getGradeToSign() << "}" <<std::endl;
     out << "THE AFORM'S EXECUTE GRADE IS: {" << rhs.getGradeToExecute() << "}" <<std::endl;
-    out << "THE AFORM'S SIGN STATUS IS: {" << rhs.getSigned() << "}" <<std::endl;
+    out << "THE AFORM'S SIGN STATUS IS: {" << rhs.getIsFormSigned() << "}" <<std::endl;
     return (out);
 }

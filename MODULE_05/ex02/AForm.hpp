@@ -12,30 +12,30 @@ class AForm
 {
     private:
         const std::string	_name;
-        bool				_signed;
-        const int			_SignGrade;
-        const int			_ExecuteGrade;
+        bool				_formStatus;
+        const int			_SignRequiredToGrade;
+        const int			_SignRequiredToExecute;
 
     public:
         AForm();
         AForm(const std::string name, const int SignGrade, const int ExecuteGrade);
         AForm(const AForm& rhs);
-        ~AForm();
+        virtual ~AForm();
 
         AForm & operator=(const AForm& rhs);
 
         const std::string	getName() const;
-        bool				getSigned() const;
+        bool				getIsFormSigned() const;
         int					getGradeToSign() const;
         int					getGradeToExecute() const;
 
         void				beSigned(const Bureaucrat& bureaucrat);
-        virtual void		execute(const Bureaucrat& executor) const = 0;
+        virtual void		execute(const Bureaucrat& executor) const = 0; 
 
         class GradeTooHighException : public std::exception
         {
             public:
-                virtual const char*	what() const throw();
+                virtual const char* what() const throw();
         };
 
         class GradeTooLowException : public std::exception

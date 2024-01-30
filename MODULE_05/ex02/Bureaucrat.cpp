@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:36:35 by arabiai           #+#    #+#             */
-/*   Updated: 2024/01/13 21:16:44 by arabiai          ###   ########.fr       */
+/*   Updated: 2024/01/30 12:32:40 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,26 +83,17 @@ std::ostream & operator<<(std::ostream & out, Bureaucrat const & rhs)
 
 void Bureaucrat::signForm(AForm & form)
 {
-    try
-    {
-        form.beSigned(*this);
-        std::cout << this->getName() << " SIGNED " << form.getName() << std::endl;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << this->getName() << " COULDN'T SIGN " << form.getName() << " BECAUSE " << e.what() << std::endl;
-    }
+    form.beSigned(*this);
+    if (form.getIsFormSigned())
+        std::cout << this->getName() << " SIGNED " << form.getName() << "successfully" << std::endl;
+    else
+        std::cout << this->getName() << " COULDN'T SIGN " << form.getName() << "BECASUE : HIS" << " IS GRADE TOO LOW" << std::endl;
 }
 
 void Bureaucrat::executeForm(AForm const & form)
 {
-    try
-    {
-        form.execute(*this);
-        std::cout << this->getName() << " EXECUTED " << form.getName() << std::endl;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << this->getName() << " COULDN'T EXECUTE " << form.getName() << " BECAUSE " << e.what() << std::endl;
-    }
+    form.execute(*this);
+    if (form.getIsFormSigned())
+        std::cout << this->getName() << " EXECUTED " << form.getName() << "successfully" << std::endl;
+    // else the exception is thrown in the execute function of the form, will be caught in the main
 }

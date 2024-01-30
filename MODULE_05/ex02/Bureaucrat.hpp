@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:36:32 by arabiai           #+#    #+#             */
-/*   Updated: 2024/01/13 21:16:05 by arabiai          ###   ########.fr       */
+/*   Updated: 2024/01/30 12:15:50 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ class Bureaucrat
         void incrementGrade();
         void decrementGrade();
         
-        void signForm(AForm & form);
-        void executeForm(AForm const & form);
+        void signForm(AForm & form); // this function will be used by the bureaucrat to sign a form
+        void executeForm(AForm const & form); // this function will be used by the bureaucrat to execute a form
 
         class GradeTooHighException : public std::exception
         {

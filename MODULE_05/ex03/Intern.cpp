@@ -16,37 +16,36 @@ Intern & Intern::operator=(Intern const & rhs) {
 }
 
 const char*	Intern::FormNotFoundException::what() const throw() {
-    return ("Intern Could not make the requested form exception\n");
+    return ("Exception: Intern Could not make the requested form\n");
 }
 
 
-unsigned int customHash(const std::string& input) {
-    unsigned int hash = 0;
-
-    for (size_t i = 0; i < input.length(); i++) {
-        hash = (hash * 7) + (unsigned int)(input[i]);
+int getIndex(const std::string& input) {
+    std::string str[3] = {"robotomy request", "shrubbery request", "presidential request"};
+    for (size_t i = 0; i < 3; i++) {
+        if (str[i] == input)
+            return i + 1;
     }
-    return hash;
+    return -1;
 }
 
 AForm *Intern::makeForm(std::string const & formName, std::string const & target) const {
     AForm *form = NULL;
-    unsigned int hashed_name = customHash(formName);
-    // robotomy request ==> 2477014416
-    // shrubbery request ==> 2088557347
-    // presidential pardon ==> 1317752587
-    switch (hashed_name) {
-        case 2477014416:
+    int index = getIndex(formName);
+
+    switch (index) {
+        case 1:
             form = new RobotomyRequestForm(target);
             break;
-        case 2088557347:
+        case 2:
             form = new ShrubberyCreationForm(target);
             break;
-        case 1317752587:
+        case 3:
             form = new PresidentialPardonForm(target);
             break;
         default:
             throw Intern::FormNotFoundException();
     }
+    std:: cout << "the form has been created by successfully by an intern" << std::endl;
     return form;
 }

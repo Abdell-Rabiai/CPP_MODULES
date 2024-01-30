@@ -11,10 +11,10 @@ class Bureaucrat;
 class Form
 {
     private:
-        const std::string	_name;
-        bool				_signed;
-        const int			_SignGrade;
-        const int			_ExecuteGrade;
+        const std::string	_name; // the name of the form
+        bool				_formStatus; // is it signed or not
+        const int			_SignRequiredToGrade; // the grade required to sign the form
+        const int			_SignRequiredToExecute; // the grade required to execute the form
 
     public:
         Form();
@@ -25,7 +25,7 @@ class Form
         Form & operator=(const Form& rhs);
 
         const std::string	getName() const;
-        bool				getSigned() const;
+        bool				getIsFormSigned() const;
         int					getGradeToSign() const;
         int					getGradeToExecute() const;
 

@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:36:32 by arabiai           #+#    #+#             */
-/*   Updated: 2024/01/13 19:22:42 by arabiai          ###   ########.fr       */
+/*   Updated: 2024/01/30 11:58:25 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ class Bureaucrat
         void incrementGrade();
         void decrementGrade();
     
-        void signForm(Form & form);
+        void signForm(Form & form); // the bureaucrat signs the form if his grade is high enough and the form is not already signed
+        // high enough means that the bureaucrat's grade must be lower or equal to the form's grade required to be signed
 
         class GradeTooHighException : public std::exception
         {

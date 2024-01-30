@@ -6,11 +6,11 @@
 #    By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/05 14:56:42 by arabiai           #+#    #+#              #
-#    Updated: 2024/01/13 18:59:13 by arabiai          ###   ########.fr        #
+#    Updated: 2024/01/30 13:19:17 by arabiai          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex01
+NAME = ex02
 
 SRC = $(wildcard *.cpp)
 HEADER = $(wildcard *.hpp *.h)

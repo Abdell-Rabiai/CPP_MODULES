@@ -6,7 +6,7 @@
 /*   By: arabiai <arabiai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:36:35 by arabiai           #+#    #+#             */
-/*   Updated: 2024/01/13 19:09:04 by arabiai          ###   ########.fr       */
+/*   Updated: 2024/01/30 12:05:40 by arabiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,9 @@ std::ostream & operator<<(std::ostream & out, Bureaucrat const & rhs)
 
 void Bureaucrat::signForm(Form & form)
 {
-    try
-    {
-        form.beSigned(*this);
-        std::cout << this->getName() << " SIGNED " << form.getName() << std::endl;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << this->getName() << " COULDN'T SIGN " << form.getName() << " BECAUSE " << e.what() << std::endl;
-    }
+    form.beSigned(*this);
+    if (form.getIsFormSigned())
+        std::cout << this->getName() << " signs " << form.getName() << std::endl;
+    else
+        std::cout << this->getName() << " cannot sign " << form.getName() << " because " << this->getName() << "'s grade is too low than the form's grade required to be signed" << std::endl;
 }

@@ -20,10 +20,10 @@ ShrubberyCreationForm::~ShrubberyCreationForm() { }
 
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
-    if (executor.getGrade() > this->getGradeToExecute())
-        throw AForm::GradeTooLowException();
-    else if (!this->getSigned())
+    if (!this->getIsFormSigned())
         throw AForm::FormNotSignedException();
+    else if (executor.getGrade() > this->getGradeToExecute())
+        throw AForm::GradeTooLowException();
     else
     {
         std::ofstream file(this->_target + "_shrubbery");

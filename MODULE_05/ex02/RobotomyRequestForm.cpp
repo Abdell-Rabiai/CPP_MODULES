@@ -20,17 +20,19 @@ RobotomyRequestForm::~RobotomyRequestForm() { }
 
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
-    if (executor.getGrade() > this->getGradeToExecute())
-        throw AForm::GradeTooLowException();
-    else if (!this->getSigned())
+    if (!this->getIsFormSigned())
         throw AForm::FormNotSignedException();
+    else if (executor.getGrade() > this->getGradeToExecute())
+        throw AForm::GradeTooLowException();
     else
     {
+        std::srand(std::time(NULL));
+        int randomNumber = std::rand();
         std::cout << "*** drilling noises ***" << std::endl;
-        if (rand() % 2 == 0) // rand() % 2 returns either true or false randomly
-            std::cout << this->_target << " has been robotomized successfully" << std::endl;
+        if (randomNumber % 2 == 0) // 50% chance of success : either true or false
+            std::cout << this->_target << " Has Been Robotomized Successfully" << std::endl;
         else
-            std::cout << this->_target << " has not been robotomized successfully" << std::endl;
+            std::cout << this->_target << " Has NOT Been Robotomized" << std::endl;
     }
 }
 

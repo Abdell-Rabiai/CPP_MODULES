@@ -20,13 +20,14 @@ ShrubberyCreationForm::~ShrubberyCreationForm() { }
 
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
-    if (executor.getGrade() > this->getGradeToExecute())
-        throw AForm::GradeTooLowException();
-    else if (!this->getSigned())
+    std::string filename = this->_target + "_shrubbery";
+    if (!this->getIsFormSigned())
         throw AForm::FormNotSignedException();
+    else if (executor.getGrade() > this->getGradeToExecute())
+        throw AForm::GradeTooLowException();
     else
     {
-        std::ofstream file(this->_target + "_shrubbery");
+        std::ofstream file(filename);
         if (!file.is_open() || file.bad())
             throw std::runtime_error("File could not be opened");
         file << "      /\\\n";
@@ -40,4 +41,5 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
         file << "      ||\n";
         file << "      ||\n";
     }
+    std::cout << executor.getName() << " created a shrubbery tree in : " << filename << std::endl;
 }
