@@ -209,9 +209,11 @@ void ScalarConverter::convertStringToInt() {
 void ScalarConverter::convertStringToFloat() {
 	try {
 		float result = 0;
+		int i = atoi(this->_stringToConvert.c_str());
 		std::string str = this->_stringToConvert;
 		result = static_cast<float>(std::stof(str));
-		std::cout << "float: [" << result << "f]" << std::endl;
+		i == result ? std::cout << "float: [" << result << ".0f]" << std::endl :
+			std::cout << "float: [" << result << "f]" << std::endl;
 	}
 	catch (const std::out_of_range &e) {
 		std::cout << e.what() << std::endl;
@@ -225,7 +227,9 @@ void ScalarConverter::convertStringToDouble() {
 	try {
 		double result = 0;
 		std::string str = this->_stringToConvert;
+		int i = atoi(this->_stringToConvert.c_str());
 		result = static_cast<double>(std::stod(str));
+		i == result ? std::cout << "double: [" << result << ".0]" << std::endl :
 		std::cout << "double: [" << result << "]" << std::endl;
 	}
 	catch (const std::out_of_range &e) {
@@ -233,54 +237,5 @@ void ScalarConverter::convertStringToDouble() {
 	}
 	catch (const std::invalid_argument &e) {
 		std::cout << e.what() << std::endl;
-	}
-}
-
-/*
-Base * generate(void);
-It randomly instanciates A, B or C and returns the instance as a Base pointer. Feel free
-to use anything you like for the random choice implementation.
-void identify(Base* p);
-It prints the actual type of the object pointed to by p: "A", "B" or "C".
-void identify(Base& p);
-It prints the actual type of the object pointed to by p: "A", "B" or "C". Using a pointer
-inside this function is forbidden.
-*/
-
-
-
-void identify(Base* p) {
-	if (dynamic_cast<A*>(p))
-		std::cout << "A" << std::endl;
-	else if (dynamic_cast<B*>(p))
-		std::cout << "B" << std::endl;
-	else if (dynamic_cast<C*>(p))
-		std::cout << "C" << std::endl;
-	else
-		std::cout << "Unknown type" << std::endl;
-}
-
-void identify(Base &b) {
-	try {
-		A &a = dynamic_cast<A&>(b);
-		std::cout << "A" << std::endl;
-		(void)a;
-	}
-	catch (std::exception &e) {
-		try {
-			B &a = dynamic_cast<B&>(b);
-			std::cout << "B" << std::endl;
-			(void)a;
-		}
-		catch (std::exception &e) {
-			try {
-				C &a = dynamic_cast<C&>(b);
-				std::cout << "C" << std::endl;
-				(void)a;
-			}
-			catch (std::exception &e) {
-				std::cout << "Unknown type" << std::endl;
-			}
-		}
 	}
 }
