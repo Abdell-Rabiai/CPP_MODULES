@@ -16,7 +16,7 @@ int main() {
 
         // int *p = new int(42);
         // char *charp = static_cast<char *>(p);
-
+        // same as
         int *p1 = new int(42);
         char *charp = (char *)p1;
 
