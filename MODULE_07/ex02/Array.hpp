@@ -34,7 +34,7 @@ template <typename myType, std::size_t N> class Array {
         // Assignment
         Array &operator=(const Array &rhs) {
             if (this != &rhs) {
-                delete [] this->myData;
+                delete [] this->myData; // deallocate existing memory
                 this->mySize = rhs.mySize;
                 this->myData = new myType[this->mySize];
                 for (size_t i = 0; i < this->mySize; i++) {
