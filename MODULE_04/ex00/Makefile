@@ -1,5 +1,5 @@
 SOURCE_NAME = ex00
-OBJECT_DIR = .ex00objs
+OBJECT_DIR = .OBJ_DIR
 
 SOURCE_FILES = $(wildcard *.cpp)
 HEADER_FILES = $(wildcard *.hpp *.h)

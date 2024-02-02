@@ -77,6 +77,15 @@ bool check_number(std::string str)
     }
     return true;
 }
+bool check_string(std::string str)
+{
+	for (size_t i = 0; i < str.length(); i++)
+	{
+		if (!isalpha(str[i]))
+			return false;
+	}
+	return true;
+}
 
 std::string Contact::check_input(std::string prompt)
 {
@@ -90,7 +99,7 @@ std::string Contact::check_input(std::string prompt)
             std::cout << "\001\033[1;31m\002\nExiting program... EOF detected\001\033[0m\002\n" << std::endl;
             exit(0);
         }
-        if (input.empty()) {
+        if (input.empty() || check_string(input) == false) {
             std::cout << "\001\033[1;31m\002\nEmpty input is not allowed. Please try again.\001\033[0m\002\n" << std::endl;
             std::cin.clear();
             return (this->check_input(prompt));
@@ -107,6 +116,17 @@ std::string Contact::check_input(std::string prompt)
     }
     return (input);
 }
+
+// bool check_string(std::string str)
+// {
+// 	for (size_t i = 0; i < str.length(); i++)
+// 	{
+// 		if (!isalpha(str[i]))
+// 			return false;
+// 	}
+// 	return true;
+// }
+
 
 void Contact::read_contact_info()
 {
