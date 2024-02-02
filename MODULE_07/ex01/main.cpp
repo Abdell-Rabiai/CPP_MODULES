@@ -1,35 +1,33 @@
-# include "whatever.hpp"
+# include "iter.hpp"
 
 int main( void ) {
-    // for integers
-    std::cout << "for integers ----------------------------->" << std::endl;
-    int a = 2;
-    int b = 3;
-    std::cout << "a = " << a << ", b = " << b << std::endl;
-    ::swap( a, b );
-    std::cout << "a = " << a << ", b = " << b << std::endl;
-    std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
-    std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
 
-    // for strings
-    std::cout << "for strings ----------------------------->" << std::endl;
-    std::string c = "chaine1";
-    std::string d = "chaine2";
-    std::cout << "c = " << c << ", d = " << d << std::endl;
-    ::swap(c, d);
-    std::cout << "c = " << c << ", d = " << d << std::endl;
-    std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
-    std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
+    // array of integers
+    std::cout << "------Array of integers --------------------------------------" << std::endl;
+    int arr[] = {1, 2, 3, 4, 5};
+    size_t length = sizeof(arr) / sizeof(arr[0]);
+    iter<int, size_t, void(*)(int const &, bool)>(arr, length, print<int>);
+    std::cout << std::endl;
 
-    // for floats
-    std::cout << "for floats ----------------------------->" << std::endl;
-    float e = 42.42;
-    float f = 21.21;
-    std::cout << "e = " << e << ", f = " << f << std::endl;
-    ::swap(e, f);
-    std::cout << "e = " << e << ", f = " << f << std::endl;
-    std::cout << "min( e, f ) = " << ::min( e, f ) << std::endl;
-    std::cout << "max( e, f ) = " << ::max( e, f ) << std::endl;
+    // array of doubles
+    std::cout << "------Array of doubles ---------------------------------------" << std::endl;
+    double arr1[] = {1.1, 2.2, 3.3, 4.4, 5.5};
+    size_t length1 = sizeof(arr1) / sizeof(arr1[0]);
+    iter<double, size_t, void(*)(double const &, bool)>(arr1, length1, print<double>);
+    std::cout << std::endl;
 
+    // array of strings
+    std::cout << "------Array of strings ---------------------------------------" << std::endl;
+    std::string arr2[] = {"one", "two", "three", "four", "five"};
+    size_t length2 = sizeof(arr2) / sizeof(arr2[0]);
+    iter<std::string, size_t, void(*)(std::string const &, bool)>(arr2, length2, print<std::string>);
+    std::cout << std::endl;
+
+    // array of chars
+    std::cout << "------Array of chars -----------------------------------------" << std::endl;
+    char arr3[] = {'a', 'b', 'c', 'd', 'e'};
+    size_t length3 = sizeof(arr3) / sizeof(arr3[0]);
+    iter<char, size_t, void(*)(char const &, bool)>(arr3, length3, print<char>);
+    std::cout << std::endl;
     return 0;
 }
