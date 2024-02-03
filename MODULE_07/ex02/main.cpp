@@ -1,7 +1,7 @@
 # include "Array.hpp"
 
 int main() {
-    // test for integers
+    // test for integers 
     std::cout << "\n______Test for integers_________________________________\n" << std::endl;
     try {
         Array<int, 7> ArrayOfInts(7);
