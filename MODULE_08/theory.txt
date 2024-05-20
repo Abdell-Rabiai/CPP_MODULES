@@ -1,0 +1,24 @@
+I.TEMPLATES : are some of the powerful methods in c++, allwoing us to write generic code.
+it allows us to define generic functions and classes, which can work with any data type
+which allows the programmer to write the same function or class to work with different
+parameters without having to rewrite the code for each type.
+
+we can define a tempalete as a blueprint or formula for creating a generic classs or functions.
+the library containers like vector, stack, queue, list, map, etc. are implemented using templates.
+we can also create our own templates by passing the data type as a parameter.
+
+syntax:
+template <class T> or template <typename T>
+class Vector : public Container <T>
+{
+    pubic :
+        // some code
+};
+
+int main()
+{
+    Vector<int> intVector;
+    Vector<float> floatVector;
+    Vector<char> charVector;
+    Vector<string> stringVector;
+}
