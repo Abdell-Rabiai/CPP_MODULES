@@ -19,7 +19,12 @@ class Span
 		~Span();
 
 		void addNumber(int n);
-		template <typename InputIterator> void addRangeNumberS(InputIterator begin, InputIterator end);
+		template <typename IteratorType>
+		void addRange(IteratorType begin, IteratorType end) {
+			if (this->vec.size() + std::distance(begin, end) > this->N)
+				throw std::runtime_error("Span has reached its maximum capacity.");
+			this->vec.insert(this->vec.end(), begin, end);
+		}
 		size_t shortestSpan();
 		size_t longestSpan();
 };

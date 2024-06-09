@@ -2,20 +2,21 @@
 # include <iostream>
 # include <string>
 
-template <typename myType, std::size_t N> class Array {
+template <typename myType, std::size_t N>
+class Array {
     private :
         myType *myData; // m_data is of type myType* (array of elements of type myType)
         std::size_t mySize; // number of elements in the array
     public :
         // Construction with no parameter: Creates an empty array.
-        Array() {
-            this->mySize = 0;
-            this->myData = NULL;
-        }
+        // Array() {
+        //     this->mySize = 0;
+        //     this->myData = NULL;
+        // }
         // Construction with an unsigned int n as a parameter: Creates an array of n elements initialized by default.
-        Array(std::size_t n) {
-            this->mySize = n;
-            this->myData = new myType[n];
+        Array() {
+            this->mySize = N;
+            this->myData = new myType[N];
             // a for loop to initialize the array with default values of type myType.
             for (size_t i = 0; i < this->mySize; i++) {
                 this->myData[i] = myType();
