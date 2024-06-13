@@ -160,22 +160,23 @@ void BitcoinExchange::parseInput()
                 }
                 if (isValidDate(date) && isValidValue(bitcoin)) {
                     this->_howManyBitcoin = bitcoin;
+                    // if ()
                     std::map<std::string, double>::iterator it = this->_data.lower_bound(date);
                     if (it == this->_data.end()) {
-                        std::cerr << "Invalid date or value on line: " << line << std::endl;
+                        std::cerr << "Invalid date or value on line00: " << line << std::endl;
                         continue;
                     }
                     this->_bitcoinValue = it->second;
                     std::cout << date << " => " << this->_howManyBitcoin << " = " << this->_bitcoinValue * this->_howManyBitcoin << std::endl;
                 } else {
-                    std::cerr << "Invalid date or value on line: " << line << std::endl;
+                    std::cerr << "Invalid date or value on line11: " << line << std::endl;
                 }
             } else {
-                std::cerr << "Invalid format on line: " << line << std::endl;
+                std::cerr << "Invalid format on line22: " << line << std::endl;
             }
         
         } else {
-            std::cerr << "Invalid format on line: " << line << std::endl;
+            std::cerr << "Invalid format on line33: " << line << std::endl;
         }
     }
 }
