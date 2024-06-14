@@ -7,6 +7,8 @@
 # include <exception>
 # include <stdexcept>
 # include <vector>
+# include <stack>
+# include <cstdlib>
 
 bool is_operator(const std::string &token);
 int calculate_rpn(const std::string &expression);

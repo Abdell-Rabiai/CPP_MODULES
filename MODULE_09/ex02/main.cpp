@@ -1,30 +1,27 @@
 # include "PmergeMe.hpp"
 
 double sort_vector(std::vector<int>& numbers) {
-    std::chrono::high_resolution_clock::time_point start;
-    std::chrono::high_resolution_clock::time_point end_vec;
-    start = std::chrono::high_resolution_clock::now();
+    clock_t start, end;
+    start = clock();
     mergeInsertionSort(numbers);
-    end_vec = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double, std::milli> duration_vec = end_vec - start;
-    return duration_vec.count();
+    end = clock();
+    return (double)(end - start) / CLOCKS_PER_SEC * 1000000.0; // Convert to microseconds
+    // in milliseconds CLOCKS_PER_SEC * 1000.0; // Convert to milliseconds
 }
 
 double sort_list(std::list<int>& lst) {
-    std::chrono::high_resolution_clock::time_point start;
-    std::chrono::high_resolution_clock::time_point end;
-    start = std::chrono::high_resolution_clock::now();
+    clock_t start, end;
+    start = clock();
     mergeInsertionSort(lst);
-    end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double, std::milli> duration_list = end - start;
-    return duration_list.count();
+    end = clock();
+    return (double)(end - start) / CLOCKS_PER_SEC * 1000000.0; // Convert to milliseconds
 }
 
 void print_timing(double duration_vec, double duration_list, int list_size) {
     std::cout << "Time to process a range of " << list_size << " elements with std::vector: "
-              << duration_vec << " ms" << std::endl;
+              << duration_vec << " us" << std::endl;
     std::cout << "Time to process a range of " << list_size << " elements with std::list: "
-              << duration_list << " ms" << std::endl;
+              << duration_list << " us" << std::endl;
 }
 
 std::vector<int> parseSequence(int argc, char* argv[]) {
@@ -64,7 +61,7 @@ int main(int argc, char* argv[]) {
     print_timing(duration_vec, duration_list, numbers.size());
 
 
-    std::cout << std::boolalpha << "Is the vector sorted? " << std::is_sorted(numbers.begin(), numbers.end()) << std::endl;
-    std::cout << "Is the list sorted? " << std::is_sorted(mylist.begin(), mylist.end()) << std::endl;
+    // std::cout << std::boolalpha << "Is the vector sorted? " << std::is_sorted(numbers.begin(), numbers.end()) << std::endl;
+    // std::cout << "Is the list sorted? " << std::is_sorted(mylist.begin(), mylist.end()) << std::endl;
     return 0;
 }

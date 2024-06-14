@@ -59,23 +59,35 @@ std::list<int>::iterator binarySearch(std::list<int>& lst, int val) {
 }
 
 // Recursive merge-insertion sort function for std::list
+
 void mergeInsertionSort(std::list<int>& lst) {
     int n = lst.size();
     if (n <= 1) return;
 
     std::list<int> larger, smaller;
     std::list<int>::iterator it = lst.begin();
+    std::list<int>::iterator end = lst.end();
+
     for (int i = 0; i < n / 2; ++i) {
-        if (*std::next(it, 2 * i) > *std::next(it, 2 * i + 1)) {
-            larger.push_back(*std::next(it, 2 * i));
-            smaller.push_back(*std::next(it, 2 * i + 1));
+        std::list<int>::iterator first = it;
+        std::advance(first, 2 * i);
+        std::list<int>::iterator second = first;
+        ++second;
+
+        if (*first > *second) {
+            larger.push_back(*first);
+            smaller.push_back(*second);
         } else {
-            larger.push_back(*std::next(it, 2 * i + 1));
-            smaller.push_back(*std::next(it, 2 * i));
+            larger.push_back(*second);
+            smaller.push_back(*first);
         }
     }
 
-    if (n % 2 == 1) smaller.push_back(*std::prev(lst.end()));
+    if (n % 2 == 1) {
+        std::list<int>::iterator last = end;
+        --last;
+        smaller.push_back(*last);
+    }
 
     mergeInsertionSort(larger);
 
@@ -87,3 +99,31 @@ void mergeInsertionSort(std::list<int>& lst) {
 
     lst = sortedList;
 }
+// void mergeInsertionSort(std::list<int>& lst) {
+//     int n = lst.size();
+//     if (n <= 1) return;
+
+//     std::list<int> larger, smaller;
+//     std::list<int>::iterator it = lst.begin();
+//     for (int i = 0; i < n / 2; ++i) {
+//         if (*std::next(it, 2 * i) > *std::next(it, 2 * i + 1)) {
+//             larger.push_back(*std::next(it, 2 * i));
+//             smaller.push_back(*std::next(it, 2 * i + 1));
+//         } else {
+//             larger.push_back(*std::next(it, 2 * i + 1));
+//             smaller.push_back(*std::next(it, 2 * i));
+//         }
+//     }
+
+//     if (n % 2 == 1) smaller.push_back(*std::prev(lst.end()));
+
+//     mergeInsertionSort(larger);
+
+//     std::list<int> sortedList = larger;
+//     for (std::list<int>::const_iterator sit = smaller.begin(); sit != smaller.end(); ++sit) {
+//         std::list<int>::iterator pos = binarySearch(sortedList, *sit);
+//         sortedList.insert(pos, *sit);
+//     }
+
+//     lst = sortedList;
+// }
