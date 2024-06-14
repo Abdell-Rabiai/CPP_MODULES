@@ -6,7 +6,7 @@
 # include <string>
 # include <exception>
 # include <vector>
-# include <regex>
+// # include <regex>
 class BitcoinExchange
 {
     private:
