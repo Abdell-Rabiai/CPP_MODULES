@@ -1,68 +1,89 @@
 # include "PmergeMe.hpp"
 
 int StringToInt(const std::string &str) {
-    std::istringstream iss(str);
-    int value;
-    if (!(iss >> value)) {
-        throw std::runtime_error("Invalid value");
-    }
-    return value;
+    std::stringstream ss(str);
+    int num;
+    ss >> num;
+    return num;
 }
-
-// Merge-Insertion Sort for std::vector
-void merge_insert(std::vector<int>& vec) {
-    if (vec.size() <= 1) return;
-
-    // Merge sort step
-    std::vector<int>::iterator middle;
-    middle = vec.begin() + vec.size() / 2;
-    std::vector<int> left(vec.begin(), middle);
-    std::vector<int> right(middle, vec.end());
-
-    merge_insert(left);
-    merge_insert(right);
-
-    // Merge step with insertion sort
-    std::merge(left.begin(), left.end(), right.begin(), right.end(), vec.begin());
-
-    // Insertion sort step
-    for (size_t i = 1; i < vec.size(); ++i) {
-        int key = vec[i];
-        size_t j = i;
-        while (j > 0 && vec[j - 1] > key) {
-            vec[j] = vec[j - 1];
-            --j;
-        }
-        vec[j] = key;
-    }
-}
-
-// Merge-Insertion Sort for std::list
-void merge_insert(std::list<int>& lst) {
-    if (lst.size() <= 1) return;
-
-    // Merge sort step
-    std::list<int>::iterator middle;
-    middle = std::next(lst.begin(), lst.size() / 2);
-    std::list<int> left(lst.begin(), middle);
-    std::list<int> right(middle, lst.end());
-
-    merge_insert(left);
-    merge_insert(right);
-
-    // Merge step with insertion sort
-    lst.merge(left);
-    lst.merge(right);
-
-    // Insertion sort step
-    std::list<int>::iterator it;
-    for (it = ++lst.begin(); it != lst.end(); ++it) {
-        std::list<int>::iterator key = it;
-        std::list<int>::iterator prev = std::prev(it);
-        while (it != lst.begin() && *prev > *key) {
-            std::iter_swap(it, prev);
-            it = prev;
-            if (it != lst.begin()) prev = std::prev(it);
+/* ------------------------------------for a vector---------------------------------------*/
+int binarySearch(const std::vector<int>& arr, int val, int end) {
+    int start = 0;
+    while (start < end) {
+        int mid = (start + end) / 2;
+        if (arr[mid] < val) {
+            start = mid + 1;
+        } else {
+            end = mid;
         }
     }
+    return start;
+}
+
+// Recursive merge-insertion sort function
+void mergeInsertionSort(std::vector<int>& arr) {
+    int n = arr.size();
+    if (n <= 1) return;
+
+    std::vector<int> larger, smaller;
+    for (int i = 0; i < n / 2; ++i) {
+        if (arr[2 * i] > arr[2 * i + 1]) {
+            larger.push_back(arr[2 * i]);
+            smaller.push_back(arr[2 * i + 1]);
+        } else {
+            larger.push_back(arr[2 * i + 1]);
+            smaller.push_back(arr[2 * i]);
+        }
+    }
+
+    if (n % 2 == 1) smaller.push_back(arr[n - 1]);
+
+    mergeInsertionSort(larger);
+
+    std::vector<int> sortedArr = larger;
+    for (size_t i = 0; i < smaller.size(); ++i) {
+        int pos = binarySearch(sortedArr, smaller[i], sortedArr.size());
+        sortedArr.insert(sortedArr.begin() + pos, smaller[i]);
+    }
+    arr = sortedArr;
+}
+
+/* ------------------------------------for a list---------------------------------------*/
+// Binary search to find the position to insert in a sorted list
+std::list<int>::iterator binarySearch(std::list<int>& lst, int val) {
+    std::list<int>::iterator it = lst.begin();
+    while (it != lst.end() && *it < val) {
+        ++it;
+    }
+    return it;
+}
+
+// Recursive merge-insertion sort function for std::list
+void mergeInsertionSort(std::list<int>& lst) {
+    int n = lst.size();
+    if (n <= 1) return;
+
+    std::list<int> larger, smaller;
+    std::list<int>::iterator it = lst.begin();
+    for (int i = 0; i < n / 2; ++i) {
+        if (*std::next(it, 2 * i) > *std::next(it, 2 * i + 1)) {
+            larger.push_back(*std::next(it, 2 * i));
+            smaller.push_back(*std::next(it, 2 * i + 1));
+        } else {
+            larger.push_back(*std::next(it, 2 * i + 1));
+            smaller.push_back(*std::next(it, 2 * i));
+        }
+    }
+
+    if (n % 2 == 1) smaller.push_back(*std::prev(lst.end()));
+
+    mergeInsertionSort(larger);
+
+    std::list<int> sortedList = larger;
+    for (std::list<int>::const_iterator sit = smaller.begin(); sit != smaller.end(); ++sit) {
+        std::list<int>::iterator pos = binarySearch(sortedList, *sit);
+        sortedList.insert(pos, *sit);
+    }
+
+    lst = sortedList;
 }

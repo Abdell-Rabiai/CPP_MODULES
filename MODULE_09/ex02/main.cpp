@@ -4,7 +4,7 @@ double sort_vector(std::vector<int>& numbers) {
     std::chrono::high_resolution_clock::time_point start;
     std::chrono::high_resolution_clock::time_point end_vec;
     start = std::chrono::high_resolution_clock::now();
-    merge_insert(numbers);
+    mergeInsertionSort(numbers);
     end_vec = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double, std::milli> duration_vec = end_vec - start;
     return duration_vec.count();
@@ -14,7 +14,7 @@ double sort_list(std::list<int>& lst) {
     std::chrono::high_resolution_clock::time_point start;
     std::chrono::high_resolution_clock::time_point end;
     start = std::chrono::high_resolution_clock::now();
-    merge_insert(lst);
+    mergeInsertionSort(lst);
     end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double, std::milli> duration_list = end - start;
     return duration_list.count();
@@ -55,11 +55,16 @@ int main(int argc, char* argv[]) {
     double duration_vec = sort_vector(numbers);
     double duration_list = sort_list(mylist);
     // Display the sorted sequence
-    std::cout << "After: ";
+    std::cout << "vector : After: ";
     print_container(numbers);
+    std::cout << "list : After  : ";
+    print_container(mylist);
 
     // Display the timing results
     print_timing(duration_vec, duration_list, numbers.size());
 
+
+    std::cout << std::boolalpha << "Is the vector sorted? " << std::is_sorted(numbers.begin(), numbers.end()) << std::endl;
+    std::cout << "Is the list sorted? " << std::is_sorted(mylist.begin(), mylist.end()) << std::endl;
     return 0;
 }
