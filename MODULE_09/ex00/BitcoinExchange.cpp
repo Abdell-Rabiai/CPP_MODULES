@@ -129,7 +129,8 @@ bool checkHeader(const std::string &line) {
 
 void BitcoinExchange::parseInput()
 {
-    std::ifstream file(this->_filename);
+    // std::ifstream file(this->_filename);
+    std::ifstream file(this->_filename.c_str());
     if (!file.is_open()) {
         file.close();
         throw std::runtime_error("Error: could not open file");
