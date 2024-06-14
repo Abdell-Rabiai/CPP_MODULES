@@ -1,0 +1,51 @@
+Original vector X = : 9 8 7 6 5 4 3 2 1 0 of size = 10
+
+intial call of mergeInsertionSort();
+    1 -> The vector is split into larger and smaller halves based on comparison of the adjacent elements.
+    vecc Larger = { (9) (7) (5) (3) (1) }
+    vec Smaller = { (8) (6) (4) (2) (0) }
+
+    its like i'm grouping the elements of X into [size / 2] elements in each group of size n = 2
+    in this case i have 5 groups of size 2 each.
+    if the size of X is odd, then the last group will have only one element. and i will leaveit unpaired.
+
+        1.2 -> the pairs are :: (9, 8) (7, 6) (5, 4) (3, 2) (1, 0)
+    
+    2 -> perform the comparison of the pairs and swap the elements if needed, sort each pair.
+        2.1 -> the pairs are :: (8, 9) (6, 7) (4, 5) (2, 3) (0, 1) 
+    
+    3 -> Recursively sort the larger vector of [size / 2] elements. (take the biggest element of each pair)
+    and that is the Larger vector, creating a sorted sequence LargerSorted = { 1 3 5 7 9 }
+        - how it wokrs: 
+            3.1 -> the larger vector is :: 9 7 5 3 1 --> it will be splited into two vectors.
+                  larger vector = 9 5
+                  smaller vector = 7 3 1
+            3.2 -> the larger vector is :: 9 5 --> it will be splited into two vectors.
+                  larger vector = 9
+                  smaller vector = 5
+            3.3 -> the larger vector is :: 9 --> base case of Recursion is reached. (size <= 1)
+                we will return the vector as it is as our lastSorted vector. { 9 }
+            * next step is to insert the smaller vector into the sorted sequence LargerSorted.
+            3.4 -> the elements of the smaller vector are :: 5
+            3.5 -> the sorted sequence LargerSorted is :: 9
+            3.6 -> insert smaller into LargerSorted ==> { 5 9 }
+            3.7 -> the sorted sequence LargerSorted is :: 5 9
+            3.8 -> return the sorted sequence LargerSorted = { 5 9 }
+            we still have the vector smaller vector = 7 3 1 to insert into the sorted sequence LargerSorted = { 5 9 } using binarySearch in the insertion part.
+            3.9 -> the elements of the smaller vector are :: 7 3 1
+            3.12 -> the sorted sequence LargerSorted is :: 1 3 5 7 9
+            we will return the sorted sequence LargerSorted = { 1 3 5 7 9 }
+            and we still have the vector smaller vector = 8 6 4 2 0 to insert into the sorted sequence LargerSorted = { 1 3 5 7 9 } using binarySearch in the insertion part.
+            it will give us the final sorted sequence LargerSorted = { 0 1 2 3 4 5 6 7 8 9 } * done. 
+
+
+    4 -> perform the insertion part: 
+        insert the elements of the smaller vector into the sorted sequence LargerSorted.
+        using binarySearch to find the correct position of the element in the sorted sequence LargerSorted.
+        4.1 -> the elements of the smaller vector are :: 8 6 4 2 0
+        4.2 -> the sorted sequence LargerSorted is :: 1 3 5 7 9
+        4.3 -> the elements of the smaller vector are inserted into the sorted sequence LargerSorted.
+        4.4 -> the sorted sequence LargerSorted is :: 0 1 2 3 4 5 6 7 8 9
+
+
+
